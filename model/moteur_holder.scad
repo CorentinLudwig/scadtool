@@ -7,7 +7,7 @@ module moteurHolder(){
     thickness = 5;
     L = 46.5;
     H = 29.4;
-    B = 7;
+    B = 5;
     
     // Back plate dimensions
     back_L = L + 5*2;
@@ -19,7 +19,7 @@ module moteurHolder(){
     available_H = back_H - 2*pad - hole;
     
     length = floor(available_L / (hole + space)) + 1;
-    height = floor(available_H / (hole + space)) + 1;
+    height = floor(available_H / (hole + space)) + 2;
     
     difference() {
         // Back plate with holes
@@ -51,7 +51,7 @@ module moteurHolder(){
     
     // Mounting cylinder
     translate([33.5+5, 11.5, thickness])
-        cylinder(h=7, r=4.3, center=false);
+        cylinder(h=B, r=4.3, center=false);
 }
 
 moteurHolder();
