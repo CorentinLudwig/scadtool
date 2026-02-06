@@ -1,6 +1,17 @@
 // M4 hole settings
 include <config.scad>;
 
+module corner(h = 2, l= 4) {
+    $fa = 1;
+    $fs = 0.1;
+    difference() {
+        cube([l, l, h]);
+        translate([0, 0, -1]) {
+            cylinder(h + 2, l, l);
+        } 
+    }
+}
+
 module moteurHolder(){
     $fa = 1;
     $fs = 0.4;
@@ -43,11 +54,23 @@ module moteurHolder(){
     
     // Left support
     translate([0, 0, 28.1+B])
-        cube([8, 23, 5]);
+        difference() {
+            cube([8, 23, 5]);
+            translate([3,23-3,0]) {
+                mirror([1,0,0]) {
+                    corner(l=3,h=5);
+                }
+            }
+        }
     
     // Right support
     translate([L+2, 0, 28.1+B])
-        cube([8, 23, 5]);
+        difference() {
+            cube([8, 23, 5]);
+            translate([8-3,23-3,0]) {
+                corner(l=3,h=5);
+            }
+        }
     
     // Mounting cylinder
     translate([33.5+5, 11.5, thickness])
