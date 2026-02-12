@@ -14,6 +14,11 @@ ufix = 1.05;
 sm_body_x = 40.7;
 sm_body_y = 20;
 sm_body_z = 40.6;
-sm_body_low_z = 28.6;
+sm_body_low_z = 28.6;   // Distance entre bas du moteur et support des vis
 sm_axe_r = 2.9;
-sm_axe_x = 6.8 + sm_axe_r; // Distance à la bordure la plus proche avec support
+sm_axe_x = 6.6 + sm_axe_r; // Distance à la bordure la plus proche avec support
+
+// battery
+bat_l = 89.3;
+bat_w = 42;
+bat_h = 22.4;
