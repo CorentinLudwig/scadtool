@@ -24,6 +24,7 @@ module moteurHolder(){
     back_L = L + 5*2;
     back_W = 2;
     back_H = H + B + 5;
+    axe_r = 4.3;
     
     // Calculate holes for back plate
     available_L = back_L - 2*pad - hole;
@@ -73,8 +74,8 @@ module moteurHolder(){
         }
     
     // Mounting cylinder
-    translate([33.5+5, 11.5, thickness])
-        cylinder(h=B, r=4.3, center=false);
+    translate([33.5+5, sm_body_y/2 + back_W + 1.5, thickness])
+        cylinder(h=B, r=axe_r, center=false);
 }
 
 moteurHolder();
