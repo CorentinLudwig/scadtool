@@ -5,7 +5,7 @@ module Battery() {
     $fs = 0.4;
 
     // block
-    cube([89.3, 42, 22.4]);
+    cube([bat_l, bat_w, bat_h]);
     // button
     translate([-1, 8, 9.3])
         cube([1,8,5]);
