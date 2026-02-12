@@ -1,5 +1,5 @@
 include <config.scad>;
-include <servomotor.scad>
+use <servomotor.scad>
 
 
 module leg_bone(l = 50, w = 5, h1 = 5, h2 = 3) {

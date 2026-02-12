@@ -31,4 +31,4 @@ module servomotor () {
 
 }
 
-// servomotor();
+servomotor();
