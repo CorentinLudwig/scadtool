@@ -23,8 +23,8 @@ module patte_u(height = 40.6, width = 19, length = 30, thickness = 5) {
                 }
         translate([thickness,-1,thickness])
             cube([length+10,width+10,height]);
-        translate([length,10,0])
-            cylinder(height+thickness*2+10,r=4.3);
+        #translate([length,width/2,0])
+            cylinder(height+thickness*2+10,r=(4.3+0.4));
         translate([length,width/2-3,height])
                 cube([10,6,thickness*2+5]);
         
