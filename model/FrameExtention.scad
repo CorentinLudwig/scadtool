@@ -52,15 +52,28 @@ module FrameExtention(length = 12, width = 8, height = 1) {
                     ])
                         cylinder(h=h + 2*pad, r=hole/2);
             
-        for(i=[1:2:length-1])
+        for(i=[1:2:length-2])
             for(k=[0:height-1])
                 translate([
                     pad + hole/2 + i*(space + hole),
                     w/2,
                     pad
                 ])
-            translate([0, -w/2-pad, 0])
-                    #cube([space*2,hole,hole]);
+                translate([0, -w/2-pad, 0])
+                        cube([space*2,w + 2*pad,hole]);
+        
+        for(j=[2:3:width-2]){
+            for(k=[0:height-1]) {
+                translate([
+                    0,
+                    pad + hole/2 + j*(space + hole),
+                    pad + k*(space + hole)
+                ])
+                cube([l + 2*pad, space*2,hole]);
+
+            }
+
+        }
     }
  }
-%FrameExtention();
+FrameExtention(22,15,1);
