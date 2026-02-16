@@ -1,4 +1,4 @@
-
+include <config.scad>
 
 module Battery() {
     $fa = 1;
