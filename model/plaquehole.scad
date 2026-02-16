@@ -2,7 +2,7 @@
 include <config.scad>;
 
 // Plate size with holes in a grid pattern
-module PlateHoles(L = 120, W = 80, H = 5) {
+module PlateHoles(L = 120, W = 80, H = 5, center = false) {
     
     $fa = 1;
     $fs = 0.4;
@@ -14,16 +14,18 @@ module PlateHoles(L = 120, W = 80, H = 5) {
     length = floor(available_L / (hole + space)) + 1;
     width = floor(available_W / (hole + space)) + 1;
     
+    shift = center ? [-L/2, -W/2, 0] : [0, 0, 0];
+    
     difference() {
         // Base plate
-        cube([L, W, H]);
+        cube([L, W, H], center);
         
         // Grid of holes
         for(i = [0:length-1])
             for(j = [0:width-1])
                 translate([
-                    pad + hole/2 + i*(hole + space),
-                    pad + hole/2 + j*(hole + space),
+                    pad + hole/2 + i*(hole + space)+ (center ? -L/2 : 0),
+                    pad + hole/2 + j*(hole + space)+ (center ? -W/2 : 0),
                     -1
                 ])
                     cylinder(h = H + 2, r = hole/2);
