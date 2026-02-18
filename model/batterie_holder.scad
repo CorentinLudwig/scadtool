@@ -31,9 +31,9 @@ module batterie_holder() {
             }
         translate([-1,size_colon,thickness])
             cube([bat_l+3+2,bat_w,bat_h+marge+1]);
-        translate([hole+pad,hole-5,14+thickness])
+        translate([hole+pad,hole-5,18+thickness])
             rotate([-90,0,0])
-                cylinder(h=bat_w+size_colon*2+5, r=hole+0.1);
+                cylinder(h=bat_w+size_colon*2+5, r=hole/2+0.1);
 
      }
 }

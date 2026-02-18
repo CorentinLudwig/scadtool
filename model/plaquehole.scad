@@ -26,9 +26,9 @@ module PlateHoles(L = 120, W = 80, H = 5, center = false) {
                 translate([
                     pad + hole/2 + i*(hole + space)+ (center ? -L/2 : 0),
                     pad + hole/2 + j*(hole + space)+ (center ? -W/2 : 0),
-                    -1
+                    (center ? -H/2-1 : -1)
                 ])
-                    cylinder(h = H + 2, r = hole/2);
+                    cylinder(h = H +1, r = hole/2);
     }
 }
 plate_L = 171+5;
