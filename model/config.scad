@@ -8,7 +8,6 @@ thickness = 2;
 
 // multiplier for hole size
 hfix = 1.15;
-ufix = 1.05;
 
 // servomotor
 sm_body_x = 40.7;
