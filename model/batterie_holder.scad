@@ -2,41 +2,51 @@ include <config.scad>
 use <plaquehole.scad>
 use <battery.scad>
 
-translate([7.9+3,7.9,5])
-%Battery();
+translate([bat_l/2,-bat_w/2,-bat_h/2])
+    mirror([1,0,0])
+    %Battery();
 
 
 module batterie_holder() {
-    size_colon = 7.9;
-    thickness = 5;
-    marge = 5;
-    l = 11;
+    $fa = 1;
+    $fs = 0.4;
+    
+    thickness = 4;
+    marge_h = 5;
+    w = 23; // extention to the plaque 23
+    marge_w = 2;
+    marge_l=7;
+    
+    length = bat_l+marge_l+thickness;
+    width = bat_w+marge_w*2+thickness*2;
+    heigth = bat_h+marge_h+thickness;
+    
     difference(){
         union(){
-            translate([
-            (bat_l+l+size_colon*2)/2,
-            (bat_w+size_colon*2)/2,
-            bat_h+thickness/2+marge
-            ])
+            translate([0,0,(heigth - thickness)/2])
                 PlateHoles(
-                bat_l+l+size_colon*2,
-            90, // a verifier
-                thickness,
-                true
-            );
+                    bat_l+marge_l+thickness,
+                    bat_w+w*2,
+                    thickness,
+                    true);
             cube([
-                bat_l+l+size_colon*2,
-                bat_w+size_colon*2,
-                bat_h+thickness+marge
-            ]);
-            }
-        translate([-1,size_colon+0.5,thickness])
-            cube([bat_l+l+2,bat_w+1,bat_h+marge+1]);
-        translate([hole+pad,hole-5,14+thickness])
+                length,
+                width,
+                heigth
+            ], true);
+        }
+        
+        translate([thickness,0,thickness/2+1])
+            cube([
+                bat_l+marge_l+ 0.01,
+                bat_w+marge_w*2,
+                bat_h+marge_h+1
+                ], true);
+        #translate([length/2 - marge_l/2,-width,5])
             rotate([-90,0,0])
-                cylinder(h=bat_w+size_colon*2+5, r=hole/2+0.1);
-
-     }
+                cylinder(h=width*2, r=hole/2+0.1);
+     
+    }
 }
 
 
